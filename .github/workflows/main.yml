@@ -23,7 +23,7 @@ jobs:
       - name: Build Docker image
         run: docker build . -t  ${{ secrets.DOCKERHUB_USERNAME }}/snmpd:latest
       - name: Install Goss
-        uses: e1himself/goss-installation-action@v1.0.3
+        uses: e1himself/goss-installation-action@v1.1.0
       - name: Execute Goss tests
         run: dgoss run test-example:dev
       - name: Push Image
