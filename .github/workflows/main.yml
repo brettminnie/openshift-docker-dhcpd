@@ -35,7 +35,9 @@ jobs:
           ignore-unfixed: true
           vuln-type: 'os,library'
           severity: 'CRITICAL,HIGH'
-      - name: Push Image
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/snmpd:${{ secrets.DOCKERHUB_USERNAME }}/snmpd:${{ github.sha }}
+      - name: Retag and Push Image
+        run: |
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/snmpd:${{ github.sha }} ${{ secrets.DOCKERHUB_USERNAME }}/snmpd:latest
+          docker push --all-tags ${{ secrets.DOCKERHUB_USERNAME }}/snmpd
 
 ...
