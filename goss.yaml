@@ -1,0 +1,49 @@
+file:
+  /config/dhcpd.conf:
+    exists: true
+    owner: root
+    group: root
+    filetype: file
+    contains: []
+package:
+  bind-export-libs:
+    installed: true
+    versions:
+    - 9.11.36
+  bind-utils:
+    installed: true
+    versions:
+    - 9.11.36
+  dhcp-common:
+    installed: true
+    versions:
+    - 4.3.6
+  dhcp-libs:
+    installed: true
+    versions:
+    - 4.3.6
+  dhcp-server:
+    installed: true
+    versions:
+    - 4.3.6
+  dhcpd-server:
+    installed: false
+port:
+  udp:67:
+    listening: true
+user:
+  dhcpd:
+    exists: true
+    uid: 177
+    gid: 177
+    groups:
+    - dhcpd
+    home: /
+    shell: /sbin/nologin
+command:
+  dhcpd --version:
+    exit-status: 0
+    stdout: []
+    stderr:
+    - isc-dhcpd-4.3.6
+    timeout: 10000
